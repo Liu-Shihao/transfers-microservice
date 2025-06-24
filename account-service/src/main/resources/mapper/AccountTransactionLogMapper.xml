@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsh.account.mapper.AccountTransactionLogMapper">
+    <resultMap id="AccountTransactionLogResultMap" type="com.lsh.account.entity.AccountTransactionLog">
+        <id property="id" column="id"/>
+        <result property="accountId" column="account_id"/>
+        <result property="operationType" column="operation_type"/>
+        <result property="amount" column="amount"/>
+        <result property="relatedTransferId" column="related_transfer_id"/>
+        <result property="remark" column="remark"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <select id="selectByAccountId" resultMap="AccountTransactionLogResultMap">
+        SELECT * FROM account_transaction_log WHERE account_id = #{accountId} ORDER BY created_at DESC
+    </select>
+    <insert id="insert" parameterType="com.lsh.account.entity.AccountTransactionLog">
+        INSERT INTO account_transaction_log(account_id, operation_type, amount, related_transfer_id, remark, created_at)
+        VALUES (#{accountId}, #{operationType}, #{amount}, #{relatedTransferId}, #{remark}, NOW())
+    </insert>
+</mapper> 
