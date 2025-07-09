@@ -96,4 +96,14 @@ public class AccountServiceImpl implements AccountService {
         }
         return false;
     }
+
+    @Override
+    public List<Account> getAllAccounts() {
+        return accountMapper.selectAll();
+    }
+
+    @Override
+    public List<Account> getAccountsByCustomerId(Long customerId) {
+        return accountMapper.selectByCustomerId(customerId);
+    }
 } 

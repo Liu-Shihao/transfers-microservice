@@ -11,6 +11,7 @@ public interface AccountMapper {
     Account selectById(@Param("accountId") Long accountId);
     Account selectByAccountNumber(@Param("accountNumber") String accountNumber);
     List<Account> selectAll();
+    List<Account> selectByCustomerId(@Param("customerId") Long customerId);
     int freezeAmount(@Param("accountId") Long accountId, @Param("amount") BigDecimal amount);
     int unfreezeAmount(@Param("accountId") Long accountId, @Param("amount") BigDecimal amount);
     int debit(@Param("accountId") Long accountId, @Param("amount") BigDecimal amount);

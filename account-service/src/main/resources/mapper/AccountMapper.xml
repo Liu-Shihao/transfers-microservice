@@ -23,6 +23,9 @@
     <select id="selectAll" resultMap="AccountResultMap">
         SELECT * FROM account
     </select>
+    <select id="selectByCustomerId" resultMap="AccountResultMap">
+        SELECT * FROM account WHERE customer_id = #{customerId}
+    </select>
     <update id="freezeAmount">
         UPDATE account SET frozen_amount = frozen_amount + #{amount}, available_balance = available_balance - #{amount}
         WHERE account_id = #{accountId} AND available_balance &gt;= #{amount}

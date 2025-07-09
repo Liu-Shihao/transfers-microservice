@@ -20,6 +20,16 @@ public class AccountController {
         return accountService.getAccountById(accountId);
     }
 
+    @GetMapping("/all")
+    public List<Account> getAllAccounts() {
+        return accountService.getAllAccounts();
+    }
+
+    @GetMapping("/byUser/{userId}")
+    public List<Account> getAccountsByUserId(@PathVariable("userId") Long userId) {
+        return accountService.getAccountsByCustomerId(userId);
+    }
+
     @GetMapping("/{accountId}/logs")
     public List<AccountTransactionLog> getAccountLogs(@PathVariable Long accountId) {
         return accountService.getAccountTransactionLogs(accountId);

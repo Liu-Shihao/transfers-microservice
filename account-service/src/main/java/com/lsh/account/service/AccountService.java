@@ -12,4 +12,6 @@ public interface AccountService {
     boolean unfreezeAmount(Long accountId, BigDecimal amount);
     boolean debit(Long accountId, BigDecimal amount);
     boolean credit(Long accountId, BigDecimal amount);
+    List<Account> getAllAccounts();
+    List<Account> getAccountsByCustomerId(Long customerId);
 } 
